@@ -1,6 +1,6 @@
-"""Synthesize the chapter 12 parity generator and checker with Yosys and count gates.
+"""Synthesize the hardware-checker lab's parity generator and checker with Yosys and count gates.
 
-Chapter 12 of Error Correction Coding is "Lab: A First Hardware Checker". It proves
+The chapter is "Lab: A First Hardware Checker" in Error Correction Coding. It proves
 that a tree of two-input XOR gates over W bits needs W - 1 gates and has a deepest
 path of ceil(log2 W) gates. This script asks Yosys what it actually builds from
 hdl/parity/ for codeword lengths n = 8, 16, 32 and 64, where the generator takes

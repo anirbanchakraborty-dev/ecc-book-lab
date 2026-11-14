@@ -1,4 +1,4 @@
-# Surfer command file for chapter 12 of Error Correction Coding.
+# Surfer command file for "Lab: A First Hardware Checker" in Error Correction Coding.
 # Adds the five signals of the parity bench to the view, in the order the
 # chapter reads them:
 #

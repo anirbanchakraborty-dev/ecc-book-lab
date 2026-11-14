@@ -1,8 +1,8 @@
 // xor_tree.sv
 //
 // The exclusive OR of W input bits, built as a balanced tree of two-input
-// XOR gates. Chapter 12 of Error Correction Coding, "Lab: A First Hardware
-// Checker", uses it twice: once to make the parity bit of a data word, and
+// XOR gates. "Lab: A First Hardware Checker" in Error Correction Coding
+// uses it twice: once to make the parity bit of a data word, and
 // once to check a received word.
 //
 // The tree is built by splitting. One bit needs no gate: the bit is its own

@@ -1,6 +1,6 @@
-"""cocotb tests for the parity bench of chapter 12 of Error Correction Coding.
+"""cocotb tests for the parity bench of "Lab: A First Hardware Checker" in Error Correction Coding.
 
-Chapter 12 is "Lab: A First Hardware Checker". The bench, hdl/parity/parity_bench.sv,
+The chapter is "Lab: A First Hardware Checker". The bench, hdl/parity/parity_bench.sv,
 chains a parity generator, a channel that flips the bits an error mask marks, and a
 parity checker. These tests drive it under Verilator and compare every output with
 a software model written in a few lines of Python below. Run them through the
@@ -60,7 +60,7 @@ def model_error(word: int) -> int:
 # Statistics -----------------------------------------------------------------------
 
 def wilson(successes: int, trials: int, z: float = Z95) -> tuple:
-    """Wilson score interval for a proportion, as chapter 11 builds it."""
+    """Wilson score interval for a proportion, as "Project: A Channel Simulator" builds it."""
     phat = successes / trials
     center = phat + z * z / (2 * trials)
     spread = z * sqrt(phat * (1 - phat) / trials + z * z / (4 * trials * trials))

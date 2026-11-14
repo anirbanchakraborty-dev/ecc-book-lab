@@ -1,6 +1,6 @@
 // parity_bench.sv
 //
-// The bench chapter 12 simulates: a parity generator, a channel that flips
+// The bench the hardware-checker lab simulates: a parity generator, a channel that flips
 // the codeword bits wherever the error mask holds a 1, and a parity checker.
 //
 //     data --> parity_gen --> codeword --XOR--> received --> parity_check --> error
@@ -13,7 +13,7 @@
 // bench, and not in the generator or the checker, which stay synthesizable
 // blocks a real design could use as they are.
 //
-// Chapter 12 of Error Correction Coding, "Lab: A First Hardware Checker".
+// From "Lab: A First Hardware Checker" in Error Correction Coding.
 
 module parity_bench #(
     parameter int K = 7                 // data bits; codewords have K+1

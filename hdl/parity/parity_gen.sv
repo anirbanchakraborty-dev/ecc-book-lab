@@ -6,7 +6,7 @@
 // of 1s. The parity bit is the exclusive OR of the data bits, made by an
 // xor_tree of K-1 gates.
 //
-// Chapter 12 of Error Correction Coding, "Lab: A First Hardware Checker".
+// From "Lab: A First Hardware Checker" in Error Correction Coding.
 // Synthesizable. Purely combinational.
 
 module parity_gen #(

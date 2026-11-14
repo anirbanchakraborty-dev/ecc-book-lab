@@ -1,6 +1,6 @@
-"""Build the chapter 12 parity bench with Verilator and run its cocotb tests.
+"""Build the hardware-checker lab's parity bench with Verilator and run its cocotb tests.
 
-Chapter 12 of Error Correction Coding is "Lab: A First Hardware Checker". Needs
+The chapter is "Lab: A First Hardware Checker" in Error Correction Coding. Needs
 Verilator 5.036 or later on the PATH and cocotb 2.1 in the Python that runs this:
 
     python tb/parity/run_parity.py

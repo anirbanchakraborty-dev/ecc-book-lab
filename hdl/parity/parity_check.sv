@@ -6,7 +6,7 @@
 // an xor_tree of K gates. A word with an even number of flipped bits passes
 // unflagged, and that is the code's blind spot, not a fault in the checker.
 //
-// Chapter 12 of Error Correction Coding, "Lab: A First Hardware Checker".
+// From "Lab: A First Hardware Checker" in Error Correction Coding.
 // Synthesizable. Purely combinational.
 
 module parity_check #(
