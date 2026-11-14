@@ -127,8 +127,24 @@ def deepest_path(node) -> set:
     return path
 
 
+def xor_gate(cx: float, cy: float, stroke: str, width: float) -> list:
+    """The ANSI/IEEE Std 91 distinctive-shape XOR gate, 40 wide and 32 tall, centred on (cx, cy).
+
+    The body is the OR shape, a concave back and a pointed front, and the second
+    curve behind it is what marks it as exclusive OR. Its output is at cx + 20.
+    """
+    left, h = cx - 20, 16
+    body = (f'<path d="M{fmt(left)} {fmt(cy - h)}Q{fmt(left + 10)} {fmt(cy)} {fmt(left)} {fmt(cy + h)}'
+            f'Q{fmt(left + 29)} {fmt(cy + h)} {fmt(cx + 20)} {fmt(cy)}'
+            f'Q{fmt(left + 29)} {fmt(cy - h)} {fmt(left)} {fmt(cy - h)}z"'
+            f' fill="{BG2}" stroke="{stroke}" stroke-width="{width}"/>')
+    back = (f'<path d="M{fmt(left - 5)} {fmt(cy - h)}Q{fmt(left + 5)} {fmt(cy)} {fmt(left - 5)} {fmt(cy + h)}"'
+            f' fill="none" stroke="{stroke}" stroke-width="{width}"/>')
+    return [body, back]
+
+
 def tree_figure(width_in: int, prefix: str, out_name: str, title: str) -> str:
-    gap, top, leaf_x, dx, box_w, box_h = 34, 40, 64, 130, 56, 26
+    gap, top, leaf_x, dx, gate_w = 34, 40, 64, 130, 40
     root = split_tree(0, width_in)
     levels = height(root)
     on_path = deepest_path(root)
@@ -146,17 +162,15 @@ def tree_figure(width_in: int, prefix: str, out_name: str, title: str) -> str:
         cx = leaf_x + 36 + height(node) * dx
         cy = (ly + hy) / 2
         hot = id(node) in on_path
-        for sx, sy, child_hot, ty in ((lx, ly, lp, cy - 7), (hx, hy, hp, cy + 7)):
+        for sx, sy, child_hot, ty in ((lx, ly, lp, cy - 8), (hx, hy, hp, cy + 8)):
             color = GREEN if hot and child_hot else "currentColor"
-            bend = cx - box_w / 2 - 18
-            wires.append(polyline([(sx, sy), (bend, sy), (bend, ty), (cx - box_w / 2 - 3, ty)], color,
-                                  2 if color == GREEN else 1.2, arrow=True))
-        stroke = GREEN if hot else "currentColor"
-        boxes.append(f'<rect x="{fmt(cx - box_w / 2)}" y="{fmt(cy - box_h / 2)}" width="{box_w}" height="{box_h}"'
-                     f' rx="3" fill="{BG2}" stroke="{stroke}" stroke-width="{2 if hot else 1.5}"/>')
-        boxes.append(text(cx, cy + 4, "XOR", "middle", size=11, weight_="600"))
+            bend = cx - gate_w / 2 - 18
+            # The wire stops on the gate's back curve, which sits about 1 px left of the body here.
+            wires.append(polyline([(sx, sy), (bend, sy), (bend, ty), (cx - gate_w / 2 - 1, ty)], color,
+                                  2 if color == GREEN else 1.2))
+        boxes.extend(xor_gate(cx, cy, GREEN if hot else "currentColor", 2 if hot else 1.5))
         count[0] += 1
-        return cx + box_w / 2, cy, hot
+        return cx + gate_w / 2, cy, hot
 
     ox, oy, _ = place(root)
     wires.append(polyline([(ox, oy), (ox + 46, oy)], GREEN, 2, arrow=True))
