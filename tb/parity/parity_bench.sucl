@@ -1,0 +1,10 @@
+# Surfer command file for chapter 12 of Error Correction Coding.
+# Adds the five signals of the parity bench to the view, in the order the
+# chapter reads them:
+#
+#     surfer tb/parity/sim_build/k7-wave/dump.vcd --command-file tb/parity/parity_bench.sucl
+variable_add parity_bench.data
+variable_add parity_bench.codeword
+variable_add parity_bench.error_mask
+variable_add parity_bench.received
+variable_add parity_bench.error

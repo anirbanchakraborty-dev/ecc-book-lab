@@ -20,15 +20,24 @@ python3 python/ch01_charts.py --out figures
 
 That writes the chapter's two charts as SVG files into `figures/`. The book's copies are made the same way, so a chart is corrected by fixing the script and running it again, never by editing the SVG.
 
+The hardware chapters also need Verilator 5.036 or newer and cocotb 2.1, and Yosys for the gate counts. Chapter 12, "Lab: A First Hardware Checker", gives the install steps for macOS, Linux and Windows. From the repository root:
+
+```bash
+python tb/parity/run_parity.py
+python synth/synth_parity.py
+```
+
+The first builds the parity bench three times under Verilator and runs its cocotb tests, and the second synthesizes the parity generator and checker with Yosys and checks their gate counts and depths against the formulas the chapter proves. Simulation output, the waveform included, lands in `tb/parity/sim_build/`, which git ignores.
+
 ## Layout
 
 The folders arrive as the chapters need them.
 
 - `python/` holds one script of numbers and, where a chapter has charts, one script of charts per chapter, named after the chapter.
-- `hdl/` will hold the SystemVerilog for each encoder and decoder the book builds.
-- `tb/` will hold the cocotb testbenches that drive those designs under Verilator.
+- `hdl/` holds the SystemVerilog, one folder per design. `hdl/parity/` is the parity generator and checker of chapter 12, built from one parameterized XOR tree, with the bench that joins them through a simulated channel.
+- `tb/` holds the cocotb testbenches that drive those designs under Verilator, one folder per design, each with a runner script that builds and runs it. `tb/parity/` also holds a Surfer command file that opens the waveform with the bench's signals in view.
+- `synth/` holds the open-source synthesis scripts that report each design's gate count and depth. `synth/synth_parity.py` is the one for chapter 12.
 - `formal/` will hold the properties that prove a design correct for every input rather than for the inputs a test happened to try.
-- `synth/` will hold the open-source synthesis scripts that report each design's gate count and depth.
 - `data/` will hold the measured data sets a chapter plots, each with a note on where it came from.
 
 ## License
