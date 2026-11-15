@@ -8,7 +8,7 @@ The chapter is an orientation and a notation primer, so its numbers are of two
 kinds. The first describes the book itself: the chapters in each Part, the
 totals at each level, and the layout of Part I. Those counts are embedded below
 as a table copied from the book's table of contents, and the script checks that
-they add up to the 187 chapters the book plans. The second kind is the worked
+they add up to the 188 chapters the book plans. The second kind is the worked
 arithmetic of the primer: sums and products, factorials and binomial
 coefficients, powers and base-2 logarithms, floors and ceilings, XOR on bits and
 bit vectors, small sets, a few probabilities, and the cases the three proofs
@@ -27,7 +27,7 @@ from math import ceil, comb, exp, factorial, floor, log, log2, prod
 
 # The book's table of contents: label, title, level, chapters.
 PARTS = [
-    ("Front matter", "Before You Start", "front", 2),
+    ("Front matter", "Before You Start", "front", 3),
     ("Part I", "Errors, Information and Channels", "undergraduate", 12),
     ("Part II", "Linear Block Codes", "undergraduate", 19),
     ("Part III", "Finite Fields and Their Arithmetic", "undergraduate", 15),
@@ -110,12 +110,12 @@ def chapters(level: str) -> int:
 
 def check_book() -> None:
     print("The book")
-    same("chapters in the book", sum(c for *_, c in PARTS), 187)
+    same("chapters in the book", sum(c for *_, c in PARTS), 188)
     same("Parts, front and back matter aside", sum(1 for lb, *_ in PARTS if lb.startswith("Part ")), 15)
     same("chapters inside the fifteen Parts", sum(c for lb, _, _, c in PARTS if lb.startswith("Part ")), 182)
-    same("chapters of front matter", chapters("front"), 2)
+    same("chapters of front matter", chapters("front"), 3)
     same("chapters of back matter", chapters("back"), 3)
-    same("front and back matter together", chapters("front") + chapters("back"), 5)
+    same("front and back matter together", chapters("front") + chapters("back"), 6)
     same("undergraduate chapters, Parts I to V", chapters("undergraduate"), 71)
     same("graduate chapters, Parts VI to XII", chapters("graduate"), 75)
     same("research chapters, Parts XIII to XV", chapters("research"), 36)
@@ -126,7 +126,7 @@ def check_book() -> None:
     same("research Parts", [lb for lb, _, lv, _ in PARTS if lv == "research"],
          ["Part XIII", "Part XIV", "Part XV"])
     same("chapters in each section, front matter to Reference", [c for *_, c in PARTS],
-         [2, 12, 19, 15, 12, 13, 9, 10, 10, 15, 8, 14, 9, 19, 10, 7, 3])
+         [3, 12, 19, 15, 12, 13, 9, 10, 10, 15, 8, 14, 9, 19, 10, 7, 3])
     parts = [(lb, c) for lb, _, _, c in PARTS if lb.startswith("Part ")]
     most = max(c for _, c in parts)
     same("most chapters in one Part", most, 19)
@@ -141,7 +141,7 @@ def check_book() -> None:
     same("chapter number of the project", PART_I.index(("project-channel-simulator", "project")) + 1, 11)
     same("chapter number of the lab", PART_I.index(("lab-first-hardware-checker", "lab")) + 1, 12)
     same("reading order of this chapter", 1, 1)
-    same("reading order of chapter 1, after the two front chapters", chapters("front") + 1, 3)
+    same("reading order of chapter 1, after the three front chapters", chapters("front") + 1, 4)
 
 
 def check_sums_and_products() -> None:

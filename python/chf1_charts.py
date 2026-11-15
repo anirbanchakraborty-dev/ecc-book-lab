@@ -89,7 +89,7 @@ def book_map() -> str:
                 f'Part, with F for the front matter and R for the Reference back matter</text>')
     total = sum(n for *_, n in PARTS)
     return svg(w, h, f"Chapters in each Part of Error Correction Coding, {total} in all. Parts I to V are undergraduate "
-               "with 71 chapters, Parts VI to XII graduate with 75, and Parts XIII to XV research with 36, beside 2 "
+               "with 71 chapters, Parts VI to XII graduate with 75, and Parts XIII to XV research with 36, beside 3 "
                "chapters of front matter and 3 of back matter.", body)
 
 
