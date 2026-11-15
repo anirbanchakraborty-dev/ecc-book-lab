@@ -1,8 +1,24 @@
-# ecc-book-lab
+<div align="center">
+
+<a href="https://dranirbanchakraborty.com/learn/error-correction-coding"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/anirbanchakraborty-dev/anirbanchakraborty-dev/output/repo-ecc-book-lab-banner-dark.svg"><img alt="ecc-book-lab, the companion code for Error Correction Coding. Beside the description, seven data bits gain an even-parity bit, one bit flips in the channel, and the XOR of all eight received bits comes out 1, so the checker reports an error." src="https://raw.githubusercontent.com/anirbanchakraborty-dev/anirbanchakraborty-dev/output/repo-ecc-book-lab-banner-light.svg" width="100%"></picture></a>
+
+[The book](https://dranirbanchakraborty.com/learn/error-correction-coding) · [Running it](#running-it) · [Layout](#layout) · [The parity checker](hdl/parity)
+
+</div>
 
 Companion repository for *Error Correction Coding*, the online book at [dranirbanchakraborty.com/learn/error-correction-coding](https://dranirbanchakraborty.com/learn/error-correction-coding). Every number the book prints and every chart it draws is computed by a program in this repository, and every hardware listing the book supplies lives here in finished form, with the testbench that exercises it.
 
 The book does not teach SystemVerilog or cocotb, and it teaches only as much Python as reading the scripts needs. It hands over each listing complete and explains what the hardware does. For the languages themselves, the *RTL Design and Verification* book, in preparation, and the HDL material in *Computer Architecture* on the same site start from nothing.
+
+Each kind of file feeds the book its own way.
+
+```mermaid
+flowchart LR
+  numbers["python/ scripts of numbers"] -->|"checked against the chapter"| text["every worked number in the book"]
+  charts["python/ scripts of charts"] -->|"written as SVG"| figures["every chart in the book"]
+  hdl["hdl/ SystemVerilog"] -->|"driven by cocotb under Verilator"| tb["tb/ testbenches"]
+  hdl -->|"synthesised by Yosys"| synth["synth/ gate count and depth"]
+```
 
 ## Running it
 
