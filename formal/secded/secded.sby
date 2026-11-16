@@ -1,0 +1,67 @@
+# secded.sby
+#
+# SymbiYosys tasks for the Hsiao (13,8) SEC-DED decoder of "Verifying ECC
+# Hardware" in Error Correction Coding. Each task reads the encoder, the decoder
+# and the formal wrapper hdl/secded/secded_formal.sv, sets the wrapper's
+# parameters and hands the result to the z3 solver through yosys-smtbmc.
+#
+#     prove_m0           the correct decoder: every assertion must hold for all
+#                        2^8 data words and every error pattern of weight <= 2
+#     prove_m1 .. m4     each planted bug: the proof must fail with a
+#                        counterexample, a (d, e) pair the bug gets wrong
+#     cover_m0           the solver must find an input of each weight 0, 1 and 2
+#     narrow_prove_m2    mutant 2 under the off-by-one assumption wt(e) < 2: the
+#                        proof passes although the bug is real, which is the
+#                        danger being shown
+#     narrow_cover_m2    the same assumption under cover: the weight-2 cover
+#                        cannot be reached, which exposes it
+#     empty_prove_m3     mutant 3 under assumptions no input satisfies: the
+#                        solver's own check that the assumptions can hold stops it
+#     empty_cover_m3     the same assumptions under cover: no cover is reached
+#
+# The design is combinational, so one time step holds every behavior and a
+# depth of 1 covers it. Run every task through the runner beside this file:
+#
+#     python formal/secded/run_formal.py
+#
+# or one task by hand from this folder:
+#
+#     sby -f secded.sby prove_m0
+#
+# Needs SymbiYosys, Yosys, yosys-smtbmc and the z3 solver.
+
+[tasks]
+prove_m0 prove m0
+prove_m1 prove m1
+prove_m2 prove m2
+prove_m3 prove m3
+prove_m4 prove m4
+cover_m0 cover m0
+narrow_prove_m2 prove m2 narrow
+narrow_cover_m2 cover m2 narrow
+empty_prove_m3 prove m3 empty
+empty_cover_m3 cover m3 empty
+
+[options]
+prove: mode prove
+cover: mode cover
+depth 1
+
+[engines]
+smtbmc z3
+
+[script]
+read -formal secded_enc.sv secded_dec.sv secded_formal.sv
+m0: chparam -set MUTANT 0 secded_formal
+m1: chparam -set MUTANT 1 secded_formal
+m2: chparam -set MUTANT 2 secded_formal
+m3: chparam -set MUTANT 3 secded_formal
+m4: chparam -set MUTANT 4 secded_formal
+narrow: chparam -set VACUOUS 1 secded_formal
+empty: chparam -set VACUOUS 2 secded_formal
+prep -top secded_formal
+
+[files]
+../../hdl/secded/secded_enc.sv
+../../hdl/secded/secded_dec.sv
+../../hdl/secded/secded_formal.sv

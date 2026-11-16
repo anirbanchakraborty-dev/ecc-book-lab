@@ -7,3 +7,5 @@ results.xml
 *.vcd
 *.fst
 .venv/
+formal/secded/secded_*/
+formal/secded/secded/
