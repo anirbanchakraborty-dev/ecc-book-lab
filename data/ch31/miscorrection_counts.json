@@ -1,0 +1,154 @@
+{
+  "chapter": 31,
+  "seed": 31,
+  "draws": 100000,
+  "weights": [3, 4],
+  "adjacent_seed": 32,
+  "checkpoints": [100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000],
+  "tools": {
+    "python": "3.14.9",
+    "cocotb": "2.1.0",
+    "verilator": "Verilator 5.054 2026-11-01 rev vUNKNOWN-built20261101"
+  },
+  "codes": {
+    "hsiao": {
+      "bench_code": 0,
+      "columns": [7, 11, 19, 35, 67, 131, 13, 21, 37, 69, 133, 25, 41, 73, 137, 49, 81, 145, 97, 161, 193, 14, 22, 38, 70, 134, 26, 42, 74, 138, 50, 82, 146, 98, 162, 194, 28, 44, 76, 140, 52, 84, 148, 100, 164, 196, 56, 88, 152, 104, 168, 200, 112, 176, 208, 224, 31, 62, 124, 248, 241, 227, 199, 143, 1, 2, 4, 8, 16, 32, 64, 128],
+      "cases": 200210,
+      "campaign": {
+        "weight_3": {
+          "correct": 0,
+          "flagged": 43778,
+          "miscorrected": 56222,
+          "undetected": 0
+        },
+        "weight_4": {
+          "correct": 0,
+          "flagged": 99136,
+          "miscorrected": 0,
+          "undetected": 864
+        }
+      },
+      "running": {
+        "weight_3": [53, 112, 271, 540, 1093, 2760, 5554, 11143, 28076, 56222],
+        "weight_4": [3, 3, 6, 16, 26, 51, 103, 189, 436, 864]
+      },
+      "adjacent": {
+        "natural": {
+          "correct": 0,
+          "flagged": 35,
+          "miscorrected": 35,
+          "undetected": 0
+        },
+        "stride11": {
+          "correct": 0,
+          "flagged": 31,
+          "miscorrected": 39,
+          "undetected": 0
+        },
+        "searched": {
+          "correct": 0,
+          "flagged": 70,
+          "miscorrected": 0,
+          "undetected": 0
+        }
+      },
+      "model_mismatches": 0,
+      "prediction_mismatches": 0
+    },
+    "hsiao_dictionary": {
+      "bench_code": 2,
+      "columns": [7, 11, 19, 35, 67, 131, 13, 21, 37, 69, 133, 25, 41, 73, 137, 49, 81, 145, 97, 161, 193, 14, 22, 38, 70, 134, 26, 42, 74, 138, 50, 82, 146, 98, 162, 194, 28, 44, 76, 140, 52, 84, 148, 100, 164, 196, 56, 88, 152, 104, 168, 200, 112, 176, 208, 224, 31, 47, 79, 143, 55, 87, 151, 103, 1, 2, 4, 8, 16, 32, 64, 128],
+      "cases": 200210,
+      "campaign": {
+        "weight_3": {
+          "correct": 0,
+          "flagged": 43016,
+          "miscorrected": 56984,
+          "undetected": 0
+        },
+        "weight_4": {
+          "correct": 0,
+          "flagged": 99171,
+          "miscorrected": 0,
+          "undetected": 829
+        }
+      },
+      "running": {
+        "weight_3": [57, 117, 280, 564, 1129, 2781, 5655, 11318, 28496, 56984],
+        "weight_4": [2, 3, 5, 17, 24, 52, 102, 184, 425, 829]
+      },
+      "adjacent": {
+        "natural": {
+          "correct": 0,
+          "flagged": 42,
+          "miscorrected": 28,
+          "undetected": 0
+        },
+        "stride11": {
+          "correct": 0,
+          "flagged": 28,
+          "miscorrected": 42,
+          "undetected": 0
+        },
+        "searched": {
+          "correct": 0,
+          "flagged": 70,
+          "miscorrected": 0,
+          "undetected": 0
+        }
+      },
+      "model_mismatches": 0,
+      "prediction_mismatches": 0
+    },
+    "hamming": {
+      "bench_code": 1,
+      "columns": [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199],
+      "cases": 200210,
+      "campaign": {
+        "weight_3": {
+          "correct": 0,
+          "flagged": 24025,
+          "miscorrected": 75975,
+          "undetected": 0
+        },
+        "weight_4": {
+          "correct": 0,
+          "flagged": 98878,
+          "miscorrected": 0,
+          "undetected": 1122
+        }
+      },
+      "running": {
+        "weight_3": [77, 148, 381, 755, 1525, 3813, 7580, 15175, 38004, 75975],
+        "weight_4": [2, 3, 8, 16, 28, 55, 111, 238, 542, 1122]
+      },
+      "adjacent": {
+        "natural": {
+          "correct": 0,
+          "flagged": 0,
+          "miscorrected": 70,
+          "undetected": 0
+        },
+        "stride11": {
+          "correct": 0,
+          "flagged": 24,
+          "miscorrected": 46,
+          "undetected": 0
+        },
+        "searched": {
+          "correct": 0,
+          "flagged": 24,
+          "miscorrected": 46,
+          "undetected": 0
+        }
+      },
+      "model_mismatches": 0,
+      "prediction_mismatches": 0
+    }
+  },
+  "paired": {
+    "hsiao_only": 9392,
+    "dictionary_only": 10154
+  }
+}
