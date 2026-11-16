@@ -1,0 +1,722 @@
+{
+ "yosys": "Yosys 0.71+post (git sha1 5628c13240f670b97aaaca3d47940c4afb8ff572, Release, AppleClang clang++ 21.0.0.21000401)",
+ "codes": [
+  {
+   "code": "hsiao",
+   "n": 72,
+   "k": 64,
+   "r": 8,
+   "row_weights": [
+    27,
+    27,
+    27,
+    27,
+    27,
+    27,
+    27,
+    27
+   ],
+   "check_fan_in": [
+    26,
+    26,
+    26,
+    26,
+    26,
+    26,
+    26,
+    26
+   ],
+   "syndrome_trees": [
+    {
+     "bit": 0,
+     "gates": 26,
+     "xor": 26,
+     "depth": 5
+    },
+    {
+     "bit": 1,
+     "gates": 26,
+     "xor": 26,
+     "depth": 5
+    },
+    {
+     "bit": 2,
+     "gates": 26,
+     "xor": 26,
+     "depth": 5
+    },
+    {
+     "bit": 3,
+     "gates": 26,
+     "xor": 26,
+     "depth": 5
+    },
+    {
+     "bit": 4,
+     "gates": 26,
+     "xor": 26,
+     "depth": 5
+    },
+    {
+     "bit": 5,
+     "gates": 26,
+     "xor": 26,
+     "depth": 5
+    },
+    {
+     "bit": 6,
+     "gates": 26,
+     "xor": 26,
+     "depth": 5
+    },
+    {
+     "bit": 7,
+     "gates": 26,
+     "xor": 26,
+     "depth": 5
+    }
+   ],
+   "encoder_trees": [
+    {
+     "bit": 64,
+     "gates": 25,
+     "xor": 25,
+     "depth": 5
+    },
+    {
+     "bit": 65,
+     "gates": 25,
+     "xor": 25,
+     "depth": 5
+    },
+    {
+     "bit": 66,
+     "gates": 25,
+     "xor": 25,
+     "depth": 5
+    },
+    {
+     "bit": 67,
+     "gates": 25,
+     "xor": 25,
+     "depth": 5
+    },
+    {
+     "bit": 68,
+     "gates": 25,
+     "xor": 25,
+     "depth": 5
+    },
+    {
+     "bit": 69,
+     "gates": 25,
+     "xor": 25,
+     "depth": 5
+    },
+    {
+     "bit": 70,
+     "gates": 25,
+     "xor": 25,
+     "depth": 5
+    },
+    {
+     "bit": 71,
+     "gates": 25,
+     "xor": 25,
+     "depth": 5
+    }
+   ],
+   "syndrome_whole": {
+    "cells": {
+     "and": 0,
+     "or": 0,
+     "xor": 169,
+     "not": 3
+    },
+    "total": 172,
+    "two_input": 169,
+    "depth": [
+     5,
+     5,
+     5,
+     5,
+     5,
+     5,
+     5,
+     5
+    ]
+   },
+   "encoder_whole": {
+    "cells": {
+     "and": 0,
+     "or": 0,
+     "xor": 159,
+     "not": 3
+    },
+    "total": 162,
+    "two_input": 159,
+    "depth": 5
+   },
+   "decoder_whole_flag0": {
+    "cells": {
+     "and": 139,
+     "or": 154,
+     "xor": 257,
+     "not": 39
+    },
+    "total": 589,
+    "two_input": 550,
+    "data_depth": 9,
+    "corrected_depth": 15,
+    "uncorrectable_depth": 16
+   },
+   "decoder_whole_flag1": {
+    "cells": {
+     "and": 121,
+     "or": 75,
+     "xor": 261,
+     "not": 10
+    },
+    "total": 467,
+    "two_input": 457,
+    "data_depth": 9,
+    "corrected_depth": 15,
+    "uncorrectable_depth": 10
+   }
+  },
+  {
+   "code": "hamming",
+   "n": 72,
+   "k": 64,
+   "r": 8,
+   "row_weights": [
+    36,
+    36,
+    36,
+    32,
+    32,
+    32,
+    8,
+    72
+   ],
+   "check_fan_in": [
+    35,
+    35,
+    35,
+    35,
+    31,
+    31,
+    31,
+    7
+   ],
+   "syndrome_trees": [
+    {
+     "bit": 0,
+     "gates": 35,
+     "xor": 35,
+     "depth": 6
+    },
+    {
+     "bit": 1,
+     "gates": 35,
+     "xor": 35,
+     "depth": 6
+    },
+    {
+     "bit": 2,
+     "gates": 35,
+     "xor": 35,
+     "depth": 6
+    },
+    {
+     "bit": 3,
+     "gates": 31,
+     "xor": 31,
+     "depth": 5
+    },
+    {
+     "bit": 4,
+     "gates": 31,
+     "xor": 31,
+     "depth": 5
+    },
+    {
+     "bit": 5,
+     "gates": 31,
+     "xor": 31,
+     "depth": 5
+    },
+    {
+     "bit": 6,
+     "gates": 7,
+     "xor": 7,
+     "depth": 3
+    },
+    {
+     "bit": 7,
+     "gates": 71,
+     "xor": 71,
+     "depth": 7
+    }
+   ],
+   "encoder_trees": [
+    {
+     "bit": 0,
+     "gates": 34,
+     "xor": 34,
+     "depth": 6
+    },
+    {
+     "bit": 1,
+     "gates": 34,
+     "xor": 34,
+     "depth": 6
+    },
+    {
+     "bit": 2,
+     "gates": 34,
+     "xor": 34,
+     "depth": 6
+    },
+    {
+     "bit": 4,
+     "gates": 34,
+     "xor": 34,
+     "depth": 6
+    },
+    {
+     "bit": 8,
+     "gates": 30,
+     "xor": 30,
+     "depth": 5
+    },
+    {
+     "bit": 16,
+     "gates": 30,
+     "xor": 30,
+     "depth": 5
+    },
+    {
+     "bit": 32,
+     "gates": 30,
+     "xor": 30,
+     "depth": 5
+    },
+    {
+     "bit": 64,
+     "gates": 6,
+     "xor": 6,
+     "depth": 3
+    }
+   ],
+   "syndrome_whole": {
+    "cells": {
+     "and": 0,
+     "or": 0,
+     "xor": 137,
+     "not": 3
+    },
+    "total": 140,
+    "two_input": 137,
+    "depth": [
+     6,
+     6,
+     6,
+     5,
+     5,
+     5,
+     3,
+     7
+    ]
+   },
+   "encoder_whole": {
+    "cells": {
+     "and": 0,
+     "or": 0,
+     "xor": 175,
+     "not": 4
+    },
+    "total": 179,
+    "two_input": 175,
+    "depth": 6
+   },
+   "decoder_whole_flag0": {
+    "cells": {
+     "and": 129,
+     "or": 142,
+     "xor": 207,
+     "not": 48
+    },
+    "total": 526,
+    "two_input": 478,
+    "data_depth": 11,
+    "corrected_depth": 17,
+    "uncorrectable_depth": 18
+   },
+   "decoder_whole_flag1": {
+    "cells": {
+     "and": 108,
+     "or": 73,
+     "xor": 204,
+     "not": 13
+    },
+    "total": 398,
+    "two_input": 385,
+    "data_depth": 11,
+    "corrected_depth": 17,
+    "uncorrectable_depth": 10
+   }
+  },
+  {
+   "code": "hsiao_dictionary",
+   "n": 72,
+   "k": 64,
+   "r": 8,
+   "row_weights": [
+    30,
+    30,
+    30,
+    26,
+    26,
+    25,
+    25,
+    24
+   ],
+   "check_fan_in": [
+    29,
+    29,
+    29,
+    25,
+    25,
+    24,
+    24,
+    23
+   ],
+   "syndrome_trees": [
+    {
+     "bit": 0,
+     "gates": 29,
+     "xor": 29,
+     "depth": 5
+    },
+    {
+     "bit": 1,
+     "gates": 29,
+     "xor": 29,
+     "depth": 5
+    },
+    {
+     "bit": 2,
+     "gates": 29,
+     "xor": 29,
+     "depth": 5
+    },
+    {
+     "bit": 3,
+     "gates": 25,
+     "xor": 25,
+     "depth": 5
+    },
+    {
+     "bit": 4,
+     "gates": 25,
+     "xor": 25,
+     "depth": 5
+    },
+    {
+     "bit": 5,
+     "gates": 24,
+     "xor": 24,
+     "depth": 5
+    },
+    {
+     "bit": 6,
+     "gates": 24,
+     "xor": 24,
+     "depth": 5
+    },
+    {
+     "bit": 7,
+     "gates": 23,
+     "xor": 23,
+     "depth": 5
+    }
+   ],
+   "encoder_trees": [
+    {
+     "bit": 64,
+     "gates": 28,
+     "xor": 28,
+     "depth": 5
+    },
+    {
+     "bit": 65,
+     "gates": 28,
+     "xor": 28,
+     "depth": 5
+    },
+    {
+     "bit": 66,
+     "gates": 28,
+     "xor": 28,
+     "depth": 5
+    },
+    {
+     "bit": 67,
+     "gates": 24,
+     "xor": 24,
+     "depth": 5
+    },
+    {
+     "bit": 68,
+     "gates": 24,
+     "xor": 24,
+     "depth": 5
+    },
+    {
+     "bit": 69,
+     "gates": 23,
+     "xor": 23,
+     "depth": 5
+    },
+    {
+     "bit": 70,
+     "gates": 23,
+     "xor": 23,
+     "depth": 5
+    },
+    {
+     "bit": 71,
+     "gates": 22,
+     "xor": 22,
+     "depth": 5
+    }
+   ],
+   "syndrome_whole": {
+    "cells": {
+     "and": 0,
+     "or": 0,
+     "xor": 164,
+     "not": 3
+    },
+    "total": 167,
+    "two_input": 164,
+    "depth": [
+     5,
+     5,
+     5,
+     5,
+     5,
+     5,
+     5,
+     5
+    ]
+   },
+   "encoder_whole": {
+    "cells": {
+     "and": 0,
+     "or": 0,
+     "xor": 156,
+     "not": 3
+    },
+    "total": 159,
+    "two_input": 156,
+    "depth": 5
+   },
+   "decoder_whole_flag0": {
+    "cells": {
+     "and": 139,
+     "or": 153,
+     "xor": 257,
+     "not": 39
+    },
+    "total": 588,
+    "two_input": 549,
+    "data_depth": 9,
+    "corrected_depth": 15,
+    "uncorrectable_depth": 16
+   },
+   "decoder_whole_flag1": {
+    "cells": {
+     "and": 120,
+     "or": 75,
+     "xor": 262,
+     "not": 8
+    },
+    "total": 465,
+    "two_input": 457,
+    "data_depth": 9,
+    "corrected_depth": 15,
+    "uncorrectable_depth": 10
+   }
+  },
+  {
+   "code": "hsiao_39_32",
+   "n": 39,
+   "k": 32,
+   "r": 7,
+   "row_weights": [
+    14,
+    14,
+    15,
+    15,
+    15,
+    15,
+    15
+   ],
+   "check_fan_in": [
+    13,
+    13,
+    14,
+    14,
+    14,
+    14,
+    14
+   ],
+   "syndrome_trees": [
+    {
+     "bit": 0,
+     "gates": 13,
+     "xor": 13,
+     "depth": 4
+    },
+    {
+     "bit": 1,
+     "gates": 13,
+     "xor": 13,
+     "depth": 4
+    },
+    {
+     "bit": 2,
+     "gates": 14,
+     "xor": 14,
+     "depth": 4
+    },
+    {
+     "bit": 3,
+     "gates": 14,
+     "xor": 14,
+     "depth": 4
+    },
+    {
+     "bit": 4,
+     "gates": 14,
+     "xor": 14,
+     "depth": 4
+    },
+    {
+     "bit": 5,
+     "gates": 14,
+     "xor": 14,
+     "depth": 4
+    },
+    {
+     "bit": 6,
+     "gates": 14,
+     "xor": 14,
+     "depth": 4
+    }
+   ],
+   "encoder_trees": [
+    {
+     "bit": 32,
+     "gates": 12,
+     "xor": 12,
+     "depth": 4
+    },
+    {
+     "bit": 33,
+     "gates": 12,
+     "xor": 12,
+     "depth": 4
+    },
+    {
+     "bit": 34,
+     "gates": 13,
+     "xor": 13,
+     "depth": 4
+    },
+    {
+     "bit": 35,
+     "gates": 13,
+     "xor": 13,
+     "depth": 4
+    },
+    {
+     "bit": 36,
+     "gates": 13,
+     "xor": 13,
+     "depth": 4
+    },
+    {
+     "bit": 37,
+     "gates": 13,
+     "xor": 13,
+     "depth": 4
+    },
+    {
+     "bit": 38,
+     "gates": 13,
+     "xor": 13,
+     "depth": 4
+    }
+   ],
+   "syndrome_whole": {
+    "cells": {
+     "and": 0,
+     "or": 0,
+     "xor": 80,
+     "not": 0
+    },
+    "total": 80,
+    "two_input": 80,
+    "depth": [
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4
+    ]
+   },
+   "encoder_whole": {
+    "cells": {
+     "and": 0,
+     "or": 0,
+     "xor": 73,
+     "not": 0
+    },
+    "total": 73,
+    "two_input": 73,
+    "depth": 4
+   },
+   "decoder_whole_flag0": {
+    "cells": {
+     "and": 80,
+     "or": 91,
+     "xor": 132,
+     "not": 23
+    },
+    "total": 326,
+    "two_input": 303,
+    "data_depth": 8,
+    "corrected_depth": 13,
+    "uncorrectable_depth": 14
+   },
+   "decoder_whole_flag1": {
+    "cells": {
+     "and": 74,
+     "or": 42,
+     "xor": 135,
+     "not": 8
+    },
+    "total": 259,
+    "two_input": 251,
+    "data_depth": 8,
+    "corrected_depth": 13,
+    "uncorrectable_depth": 9
+   }
+  }
+ ]
+}

@@ -1,0 +1,74 @@
+# secded72.sby
+#
+# SymbiYosys tasks for the (72,64) SEC-DED encoder and decoder of "Project: A
+# SEC-DED Encoder and Decoder" in Error Correction Coding. Each task reads the
+# package, the encoder, the syndrome stage, the decoder and the formal wrapper
+# hdl/secded72/secded72_formal.sv, sets the wrapper's parameters and hands the
+# result to a solver.
+#
+#     prove_hsiao            the Hsiao (72,64) decoder with the no-match form of
+#                            the uncorrectable flag: every assertion must hold
+#                            for all 2^64 data words and every error pattern of
+#                            weight <= 2
+#     prove_hsiao_parity     the same with the parity form of the flag
+#     prove_hamming          the extended Hamming (72,64) decoder, no-match form
+#     prove_hamming_parity   the same with the parity form of the flag
+#     cover_hsiao            the solver must find an input of each weight 0, 1, 2
+#     cover_hamming          the same for the extended Hamming code
+#     narrow_cover_hsiao     an assumption that leaves the second error position
+#                            unused: the weight-2 cover cannot be reached, which
+#                            exposes the mistake a passing proof would hide
+#     prove_dictionary       the Hsiao code in dictionary order, for an exercise
+#     prove_39_32            the Hsiao (39,32) code, for an exercise
+#
+# The design is combinational, so one time step holds every behavior and a depth
+# of 1 covers it. The proofs run on ABC's pdr engine, which reads the design as
+# a graph of AND gates and inverters, and the covers on yosys-smtbmc with z3,
+# which writes a trace for every cover it reaches. Run the tasks through the
+# runner beside this file:
+#
+#     python3 formal/secded72/run_formal72.py
+#
+# or one task by hand from this folder:
+#
+#     sby -f secded72.sby prove_hsiao
+#
+# Needs SymbiYosys, Yosys with its yosys-abc, yosys-smtbmc and the z3 solver.
+
+[tasks]
+prove_hsiao prove hsiao nomatch
+prove_hsiao_parity prove hsiao parity
+prove_hamming prove hamming nomatch
+prove_hamming_parity prove hamming parity
+cover_hsiao cover hsiao nomatch
+cover_hamming cover hamming nomatch
+narrow_cover_hsiao cover hsiao nomatch narrow
+prove_dictionary prove dictionary nomatch
+prove_39_32 prove h39 nomatch
+
+[options]
+prove: mode prove
+cover: mode cover
+depth 1
+
+[engines]
+prove: abc pdr
+cover: smtbmc z3
+
+[script]
+read -formal secded72_pkg.sv secded72_syndrome.sv secded72_enc.sv secded72_dec.sv secded72_formal.sv
+hsiao: chparam -set CODE 0 secded72_formal
+hamming: chparam -set CODE 1 secded72_formal
+dictionary: chparam -set CODE 2 secded72_formal
+h39: chparam -set CODE 3 secded72_formal
+nomatch: chparam -set FLAG 0 secded72_formal
+parity: chparam -set FLAG 1 secded72_formal
+narrow: chparam -set VACUOUS 1 secded72_formal
+prep -top secded72_formal
+
+[files]
+../../hdl/secded72/secded72_pkg.sv
+../../hdl/secded72/secded72_syndrome.sv
+../../hdl/secded72/secded72_enc.sv
+../../hdl/secded72/secded72_dec.sv
+../../hdl/secded72/secded72_formal.sv
