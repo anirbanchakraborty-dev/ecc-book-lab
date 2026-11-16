@@ -61,14 +61,16 @@ tools/compare-routes.sh ch05 chf2
 
 That runs each chapter's Python script and its Octave twin and checks that the two print the same lines, ignoring only runs of spaces, and that both exit with status 0. It exits 0 when every chapter passes, 1 when any differs and 2 when Python or Octave is missing, and `PYTHON` and `OCTAVE` name other interpreters.
 
-The hardware chapters also need Verilator 5.036 or newer and cocotb 2.1, and Yosys for the gate counts. The chapter "Lab: A First Hardware Checker" gives the install steps for macOS, Linux and Windows. From the repository root:
+The hardware chapters also need Verilator 5.036 or newer and cocotb 2.1, and Yosys for the gate counts. The formal proofs also need SymbiYosys and a solver for it to call, z3 in the book's commands. The chapter "Lab: A First Hardware Checker" gives the install steps for macOS, Linux and Windows, and they end in a virtual environment holding cocotb. From the repository root, with that environment active, so that `python` names its interpreter:
 
 ```bash
 python tb/parity/run_parity.py
 python synth/synth_parity.py
+python tb/secded/run_secded.py
+python formal/secded/run_formal.py
 ```
 
-The first builds the parity bench three times under Verilator and runs its cocotb tests, and the second synthesizes the parity generator and checker with Yosys and checks their gate counts and depths against the formulas the chapter proves. Simulation output, the waveform included, lands in `tb/parity/sim_build/`, which git ignores.
+The first builds the parity bench three times under Verilator and runs its cocotb tests, and the second synthesizes the parity generator and checker with Yosys and checks their gate counts and depths against the formulas the chapter proves. Simulation output, the waveform included, lands in `tb/parity/sim_build/`, which git ignores. The third builds the SEC-DED bench of "Verifying ECC Hardware" once for the correct decoder and once for each planted bug, and checks the cases each gets wrong against two software models. The fourth runs the SymbiYosys proofs of the same decoder and checks every verdict and every counterexample, including that each counterexample is the pair the chapter quotes. Those pairs are the ones z3 returned on the recorded run, and with `--any-counterexample` the runner accepts any pair the model agrees is wrong, as another solver build may choose. Their output lands in `tb/secded/sim_build/` and in the `secded_*` folders under `formal/secded/`, which git ignores too.
 
 ## Layout
 
@@ -77,10 +79,10 @@ The folders arrive as the chapters need them.
 - `python/` holds one script of numbers and, where a chapter has charts, one script of charts per chapter, named after the chapter.
 - `octave/` holds the GNU Octave twin of each script of numbers, under the same name. `octave/common/` holds the four helpers the twins share: `half_unit`, the tolerance every check allows, `py_g` and `py_str`, which print a value the way Python does, and `PyRandom`, Python's random-number generator rewritten in Octave so that the twins draw the same random numbers.
 - `tools/` holds `compare-routes.sh`, which checks that each script and its twin print the same lines.
-- `hdl/` holds the SystemVerilog, one folder per design. `hdl/parity/` is the parity generator and checker of "Lab: A First Hardware Checker", built from one parameterized XOR tree, with the bench that joins them through a simulated channel.
-- `tb/` holds the cocotb testbenches that drive those designs under Verilator, one folder per design, each with a runner script that builds and runs it. `tb/parity/` also holds a Surfer command file that opens the waveform with the bench's signals in view.
+- `hdl/` holds the SystemVerilog, one folder per design. `hdl/parity/` is the parity generator and checker of "Lab: A First Hardware Checker", built from one parameterized XOR tree, with the bench that joins them through a simulated channel. `hdl/secded/` is the Hsiao (13,8) SEC-DED encoder and decoder of "Verifying ECC Hardware", the decoder with a parameter that plants one of four bugs, with its bench and the wrapper that states its guarantees for a formal tool.
+- `tb/` holds the cocotb testbenches that drive those designs under Verilator, one folder per design, each with a runner script that builds and runs it. `tb/parity/` also holds a Surfer command file that opens the waveform with the bench's signals in view. `tb/secded/` also holds the pure-Python model of the SEC-DED code that its tests and the formal runner share.
 - `synth/` holds the open-source synthesis scripts that report each design's gate count and depth. `synth/synth_parity.py` is the one for "Lab: A First Hardware Checker".
-- `formal/` will hold the properties that prove a design correct for every input rather than for the inputs a test happened to try.
+- `formal/` holds the properties that prove a design correct for every input rather than for the inputs a test happened to try, one folder per design. `formal/secded/` holds the SymbiYosys tasks for the SEC-DED decoder of "Verifying ECC Hardware" and a runner that checks each verdict.
 - `data/` will hold the measured data sets a chapter plots, each with a note on where it came from.
 
 ## License
